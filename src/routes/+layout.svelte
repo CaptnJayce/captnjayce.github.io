@@ -5,43 +5,71 @@
 <style>
     :global {
         body {
+            font-family: Hack;
+            color: #FDF0ED;
             background-color: #232530;
         }
 
         .title {
             color: #FDF0ED;
         }
+
+    }
+
+    .layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 98vh;
     }
 
     .nav {
-        background-color: #FDF0ED;
         display: flex;
         justify-content: center;
     }
 
-    .button {
-        background-color: #1A1C23;
-        border: none;
-        color: #FDF0ED;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
+    .content {
+        flex: 1;
     }
+
+    .footer {
+        text-align: center;
+        color: white;
+    }
+
+    .footerText {
+        display: inline;
+        margin: 0px 100px 0px 100px;
+    }
+
+    .navText {
+        color: #FDF0ED;
+        font-size: 16px;
+        width: 30px;
+        margin: 0rem 5rem 0rem 5rem;
+    }
+    .navText:hover {
+        color: #3FC6DE;
+    }
+
     a {
         text-decoration: none;
         color: #FDF0ED;
     }
 </style>
 
-<nav class = "nav">
-    <a href="/" class="button">Home</a>
-    <a href="/about" class="button">About</a>
-    <a href="/projects" class="button">Project</a>
-    <a href="/games" class="button">Soon</a>
-    <a href="/links" class="button">Links</a>
-</nav>
+<div class="layout">
+    <nav class="nav">
+        <a href="/" class="navText">home</a>
+        <a href="/projects" class="navText">projects</a>
+    </nav>
 
-{@render children()}
+    <main class="content">
+        {@render children()}
+    </main>
+
+    <footer class="footer">
+         <a href="https://github.com/CaptnJayce" class="footerText"><i class="nf nf-fa-github"></i> CaptnJayce</a>
+         <p class="footerText"><i class="nf nf-md-email_outline"></i> captn.enquiries@protonmail.com </p>
+         <a href="https://captnjayce.itch.io/" class="footerText"><i class="nf nf-fa-itch_io"></i> CaptnJayce</a>
+    </footer>
+</div>
