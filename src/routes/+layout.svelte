@@ -1,5 +1,6 @@
 <script lang="ts">
 	let { children } = $props();
+    import { base } from "$app/paths";
 </script>
 
 <style>
@@ -59,8 +60,8 @@
 
 <div class="layout">
     <nav class="nav">
-        <a href="/" class="navText">home</a>
-        <a href="/projects" class="navText">projects</a>
+        <a href="{base}/" class="navText">home</a>
+        <a href="{base}/projects" class="navText">projects</a>
     </nav>
 
     <main class="content">
