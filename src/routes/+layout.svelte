@@ -5,10 +5,15 @@
 
 <style>
     :global {
+        :root {
+            --arch-blue: #1793d1;
+            --kde-bg: #31363b95;
+        }
         body {
             font-family: Hack;
             color: #FDF0ED;
             background-color: #232530;
+            margin: 0;
         }
 
         .title {
@@ -25,7 +30,8 @@
 
     .nav {
         display: flex;
-        justify-content: center;
+        background-color: var(--kde-bg);
+        height: 26px;
     }
 
     .content {
@@ -43,15 +49,23 @@
     }
 
     .navText {
+        justify-content: center;
         color: #FDF0ED;
         font-size: 16px;
-        width: 30px;
-        margin: 0rem 5rem 0rem 5rem;
+        margin: 2px 25px 0px 25px;
     }
     .navText:hover {
-        color: #3FC6DE;
+        color: var(--arch-blue);
     }
 
+    .navIcon {
+        color: #FDF0ED;
+        font-size: 16px;
+        margin: 2px 25px 0px 25px;
+    }
+    .navIcon:hover {
+        color: var(--arch-blue);
+    }
     a {
         text-decoration: none;
         color: #FDF0ED;
@@ -60,8 +74,10 @@
 
 <div class="layout">
     <nav class="nav">
-        <a href="{base}/" class="navText">home</a>
-        <a href="{base}/projects" class="navText">projects</a>
+        <a href="{base}/" class="navIcon"><i class="nf nf-md-arch"></i></a>
+        <a href="{base}/projects" class="navText">Projects</a>
+        <a href="{base}/games" class="navText">Games</a>
+        <a href="{base}/info" class="navText">Info</a>
     </nav>
 
     <main class="content">
