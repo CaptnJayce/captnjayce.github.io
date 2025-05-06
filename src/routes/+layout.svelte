@@ -1,6 +1,30 @@
 <script lang="ts">
 	let { children } = $props();
     import { base } from "$app/paths";
+    import { onMount, onDestroy } from 'svelte';
+  
+    let currentTime = $state();
+    let interval: number;
+    
+    const updateTime = () => {
+        const options = {
+        timeZone: 'Europe/London',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+        };
+        currentTime = new Date().toLocaleTimeString('en-GB', options);
+    };
+    
+    onMount(() => {
+        updateTime();
+        interval = setInterval(updateTime, 1000);
+    });
+    
+    onDestroy(() => {
+        clearInterval(interval);
+    });
 </script>
 
 <style>
@@ -28,10 +52,21 @@
         min-height: 98vh;
     }
 
-    .nav {
+    .navBar {
         display: flex;
+        height: 40px;
+    }
+    .navLeft {
+        display: flex;
+        justify-content: left;
         background-color: var(--kde-bg);
-        height: 26px;
+        width: 50%;
+    }
+    .navRight {
+        display: flex;
+        justify-content: right;
+        background-color: var(--kde-bg);
+        width: 50%;
     }
 
     .content {
@@ -49,35 +84,40 @@
     }
 
     .navText {
-        justify-content: center;
         color: #FDF0ED;
         font-size: 16px;
-        margin: 2px 25px 0px 25px;
+        margin: 9px 25px 0px 25px;
     }
     .navText:hover {
         color: var(--arch-blue);
     }
-
+    
     .navIcon {
         color: #FDF0ED;
-        font-size: 16px;
-        margin: 2px 25px 0px 25px;
+        font-size: 30px;
+        margin: 0px 25px 0px 25px;
     }
     .navIcon:hover {
         color: var(--arch-blue);
     }
+
     a {
-        text-decoration: none;
         color: #FDF0ED;
+        text-decoration: none;
     }
 </style>
 
 <div class="layout">
-    <nav class="nav">
-        <a href="{base}/" class="navIcon"><i class="nf nf-md-arch"></i></a>
-        <a href="{base}/projects" class="navText">Projects</a>
-        <a href="{base}/games" class="navText">Games</a>
-        <a href="{base}/info" class="navText">Info</a>
+    <nav class="navBar">
+        <div class="navLeft">
+            <a href="{base}/" class="navIcon"><i class="nf nf-md-arch"></i></a>
+            <a href="{base}/projects" class="navText">Projects</a>
+            <a href="{base}/games" class="navText">Games</a>
+            <a href="{base}/info" class="navText">Info</a>
+        </div>
+        <div class="navRight">
+            <div class="navText">My Time: {currentTime}</div>
+        </div>
     </nav>
 
     <main class="content">

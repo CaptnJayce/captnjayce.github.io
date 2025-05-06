@@ -1,7 +1,3 @@
-<script>
- 	import pfp from '$lib/images/invincible_pfp.png';   
-</script>
-
 <style>
     .box {
         margin: 0;
@@ -20,25 +16,31 @@
     }
 
     .right {
-        display: inline-block;
-        position: relative;
-        width: 69.5%;
+        margin-top: 64px;
+        width: 77%;
         height: 100%;
     }
     .rightText {
-        position: relative;
-        top: 42%;
+        display: grid;
+        justify-items: left;
+    }
+    .rightText p {
+        margin: 4px;
+    }
+    .indent {
+        display: grid;
+        justify-items: left;
+        text-indent: 30px;
     }
 
     .left {
-        display: inline-block;
-        position: relative;
-        width: 29.5%;
+        width: 23%;
         height: 100%;
     }
     .leftText{
-        position: relative;
-        left: -20%;
+        display: grid;
+        justify-content: left;
+        top: 42%;
     }
 </style>
 
@@ -48,21 +50,33 @@
 
             <p>~ $ fastfetch</p>
                 <pre>
-.
-/ \
-/   \
-/\    \
-/       \
-/         \
-/    .-.    \
-/    |   |    \
-/   .'     '.   \
-/.-'          '-._\
+    .
+    / \
+    /   \
+    /\    \
+    /       \
+    /         \
+    /    .-.    \
+    /    |   |    \
+    /   .'     '.   \
+    /.-'          '-._\
                 </pre>
         </div>
     </div>
     <div class="right">
         <div class="rightText">
+            <p style="color:var(--arch-blue)">captn<span style="color:white">@</span>portfolio_website</p>
+            <p><i class="nf nf-fa-gear"></i>  im Casey (he/him), a 22yo "software dev" from London</p>
+            <p><i class="nf nf-oct-server"></i>  im currently focused on making a game called "Witch Way", set in my own universe</p>
+            <p><i class="nf nf-cod-package"></i>  professionally, i have experience in full stack web and software engineering</p>
+            <p><i class="nf nf-cod-terminal"></i>  other interests:</p>
+            <div class="indent">
+                <p>~ $ 3D printing</p>
+                <p>~ $ writing</p>
+                <p>~ & pixel art</p>
+                <p>~ & video games</p>
+            </div>
+            <p><i class="nf nf-cod-window"></i>  currently using Arch/Hyprland</p>
         </div>
     </div>
 </div>
