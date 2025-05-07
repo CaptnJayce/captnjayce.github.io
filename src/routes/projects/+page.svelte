@@ -1,5 +1,7 @@
 <script>
     let activeTab = 'completed_projects';
+ 	import algo from '$lib/images/algo.png';   
+ 	import ptf1 from '$lib/images/ptf1.png';   
 </script>
 
 <style>
@@ -37,6 +39,9 @@
     .terminal {
         width: 100%;
         padding-left: 20px;
+        overflow-y: scroll;
+
+        padding-bottom: 50vh;
     }
 
     .buttons {
@@ -58,12 +63,22 @@
     }
 
     .links {
-        font-size: 26px;
+        font-size: 20px;
+        font-weight: bold;
         color: var(--white);
-        text-decoration: none;
     }
     .links:hover {
         color: var(--arch-blue);
+    }
+
+    .description {
+        font-size: 14px;
+        padding: 0;
+        margin: 0 4px 5px 0px;
+    }
+
+    .lineBreak {
+        padding: 20px 20px 40px 0px;
     }
 </style>
 
@@ -71,37 +86,46 @@
     <div class="terminal">
         {#if activeTab === 'completed_projects'}
             <p> ~ $ completed projects </p>
-            <div>
-                <a href="https://github.com/CaptnJayce/algorithm-visualizser" class="links"><i class="nf nf-fa-arrow_right"></i> algorithm visualizser</a>
-                <p>this was a web project, made in HTML, CSS, and JS. it visualises sorting algorithms and provides code in JavaScript</p>
+            <a href="https://github.com/CaptnJayce/algorithm-visualizser" class="links"><i class="nf nf-fa-arrow_right"></i> algorithm visualizser</a>
+            <p class="description">this was a web project, made in HTML, CSS, and JS. it visualises sorting algorithms and provides code in JavaScript</p>
+            <p class="description">~ : i will be improving it soon, fixing bugs + redesigning it</p>
+            <img src="{algo}" alt="algo_vis" width=932px height=409px>
+
+            <div class="lineBreak">
+                <hr>
             </div>
-            <hr>
-            <div>
-                <a href="https://captnjayce.itch.io/parry-the-floor" class="links"><i class="nf nf-fa-arrow_right"></i> parry the floor</a>
-                <p>my first game development project, made in Godot across two to three months, i put together a simple platformer with the goal of 'parrying' off objects instead of avoiding them</p>
-                <p>the core of the game was heavily inspired by hollow knight's 'pogo' mechanic</p>
+
+            <a href="https://captnjayce.itch.io/parry-the-floor" class="links"><i class="nf nf-fa-arrow_right"></i> parry the floor</a>
+            <p class="description">my first game development project, made in Godot across two to three months, i put together a simple platformer with the goal of 'parrying' off objects instead of avoiding them</p>
+            <p class="description">~ : the core of the game was heavily inspired by hollow knight's 'pogo' mechanic</p>
+            <p class="description">~ : it taught me a lot, but looking back on it there's a lot of things i'd do differently</p>
+            <img src="{ptf1}" alt="parry_the_floor" width=681px height=367px>
+
+            <div class="lineBreak">
+                <hr>
             </div>
-            <hr>
-            <div>
-                <a href="https://www.tinosport.co.uk/" class="links"><i class="nf nf-fa-arrow_right"></i> tino sport web page</a>
-                <p>tasked with rehauling the front-end of a shopify page as well as optimising back-end workflow</p>
-            </div>
+
+            <a href="https://www.tinosport.co.uk/" class="links"><i class="nf nf-fa-arrow_right"></i> tino sport web page</a>
+            <p class="description">tasked with rehauling the front-end of a shopify page as well as optimising back-end workflow</p>
+
         {:else if activeTab === 'work_in_progress'}
             <p> ~ $ work in progress projects </p>
-            <div>
-                <a href="https://github.com/CaptnJayce/captnjayce.github.io" class="links"><i class="nf nf-fa-arrow_right"></i> this website</a>
-                <p>made in svelte, i created this site to showcase what i've done and what i'm doing. i also plan to host web games and maybe a blog in the future</p>
+            <a href="https://github.com/CaptnJayce/captnjayce.github.io" class="links"><i class="nf nf-fa-arrow_right"></i> this website</a>
+            <p class="description">made in svelte, i created this site to showcase what i've done and what i'm doing. i also plan to host web games and maybe a blog in the future</p>
+
+            <div class="lineBreak">
+                <hr>
             </div>
-            <hr>
-            <div>
-                <a href="https://github.com/CaptnJayce/witch-way" class="links"><i class="nf nf-fa-arrow_right"></i> witch way</a>
-                <p>my current long-term project, witch way is a game made in Odin & Raylib that aims to bring forth creative mechanics in a unique universe. its very early in development at the moment</p>
+
+            <a href="https://github.com/CaptnJayce/witch-way" class="links"><i class="nf nf-fa-arrow_right"></i> witch way</a>
+            <p class="description">my current long-term project, witch way is a game made in Odin & Raylib that aims to bring forth creative mechanics in a unique universe. its very early in development at the moment</p>
+
+            <div class="lineBreak">
+                <hr>
             </div>
-            <hr>
-            <div>
-                <h2><i class="nf nf-fa-arrow_right"></i> custom keyboard</h2>
-                <p>im currently sourcing parts to make my own custom split keyboard, i will likely make an ErgoDash, or something similar</p>
-            </div>
+
+            <a href="https://github.com/omkbd/ErgoDash" class="links"><i class="nf nf-fa-arrow_right"></i> ergodash</a>
+            <p class="description">im currently sourcing parts to make my own custom split keyboard, i will likely make an ErgoDash, or something similar</p>
         {/if}
     </div>
 </div>
