@@ -8,11 +8,11 @@
     
     const updateTime = () => {
         const options = {
-        timeZone: 'Europe/London',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
+            timeZone: 'Europe/London',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
         };
         currentTime = new Date().toLocaleTimeString('en-GB', options);
     };
@@ -32,16 +32,17 @@
         :root {
             --arch-blue: #1793d1;
             --kde-bg: #31363b95;
+            --white: #FDF0ED;
         }
         body {
             font-family: Hack;
-            color: #FDF0ED;
+            color: var(--white);
             background-color: #232530;
             margin: 0;
         }
 
         .title {
-            color: #FDF0ED;
+            color: var(--white);
         }
 
     }
@@ -75,7 +76,7 @@
 
     .footer {
         text-align: center;
-        color: white;
+        color: var(--white);
     }
 
     .footerText {
@@ -84,7 +85,7 @@
     }
 
     .navText {
-        color: #FDF0ED;
+        color: var(--white);
         font-size: 16px;
         margin: 9px 25px 0px 25px;
     }
@@ -93,7 +94,7 @@
     }
     
     .navIcon {
-        color: #FDF0ED;
+        color: var(--white);
         font-size: 30px;
         margin: 0px 25px 0px 25px;
     }
@@ -102,7 +103,7 @@
     }
 
     a {
-        color: #FDF0ED;
+        color: var(--white);
         text-decoration: none;
     }
 </style>
@@ -110,6 +111,7 @@
 <div class="layout">
     <nav class="navBar">
         <div class="navLeft">
+            <!-- svelte-ignore a11y_consider_explicit_label -->
             <a href="{base}/" class="navIcon"><i class="nf nf-md-arch"></i></a>
             <a href="{base}/projects" class="navText">Projects</a>
             <a href="{base}/games" class="navText">Games</a>

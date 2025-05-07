@@ -40,7 +40,6 @@
     .leftText{
         display: grid;
         justify-content: left;
-        top: 42%;
     }
 </style>
 
