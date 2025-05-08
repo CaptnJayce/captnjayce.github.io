@@ -14,7 +14,7 @@
             second: '2-digit',
             hour12: false
         };
-        currentTime = new Date().toLocaleTimeString('en-GB', options);
+        currentTime = new Date().toLocaleTimeString('en-GB');
     };
     
     onMount(() => {
@@ -30,14 +30,16 @@
 <style>
     :global {
         :root {
-            --arch-blue: #1793d1;
-            --kde-bg: #31363b95;
+            --link-blue: #21BFC2;
+            --command-green: #29D398;
+            --red: #F43E5C;
+            --dark-bg: #1A1C23;
             --white: #FDF0ED;
         }
         body {
             font-family: Hack;
             color: var(--white);
-            background-color: #232530;
+            background-color: #16161C;
             margin: 0;
         }
 
@@ -45,6 +47,9 @@
             color: var(--white);
         }
 
+        .command {
+            color: var(--command-green);
+        }
     }
 
     .layout {
@@ -60,13 +65,13 @@
     .navLeft {
         display: flex;
         justify-content: left;
-        background-color: var(--kde-bg);
+        background-color: var(--dark-bg);
         width: 50%;
     }
     .navRight {
         display: flex;
         justify-content: right;
-        background-color: var(--kde-bg);
+        background-color: var(--dark-bg);
         width: 50%;
     }
 
@@ -90,7 +95,7 @@
         margin: 9px 25px 0px 25px;
     }
     .navText:hover {
-        color: var(--arch-blue);
+        color: var(--link-blue);
     }
     
     .navIcon {
@@ -99,7 +104,7 @@
         margin: 0px 25px 0px 25px;
     }
     .navIcon:hover {
-        color: var(--arch-blue);
+        color: var(--link-blue);
     }
 
     a {
@@ -125,10 +130,4 @@
     <main class="content">
         {@render children()}
     </main>
-
-    <footer class="footer">
-         <a href="https://github.com/CaptnJayce" class="footerText"><i class="nf nf-fa-github"></i> CaptnJayce</a>
-         <p class="footerText"><i class="nf nf-md-email_outline"></i> captn.enquiries@protonmail.com </p>
-         <a href="https://captnjayce.itch.io/" class="footerText"><i class="nf nf-fa-itch_io"></i> CaptnJayce</a>
-    </footer>
 </div>
