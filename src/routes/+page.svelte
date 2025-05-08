@@ -12,7 +12,7 @@
         justify-content: center;
         justify-items: center;
         text-align: center;
-        background-color: var(--kde-bg);
+        background-color: #232627;
     }
 
     .right {

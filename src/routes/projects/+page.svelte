@@ -1,7 +1,7 @@
 <script>
     let activeTab = 'completed_projects';
- 	import algo from '$lib/images/algo.png';   
- 	import ptf1 from '$lib/images/ptf1.png';   
+    import algo from '$lib/images/algo.png';   
+    import ptf1 from '$lib/images/ptf1.png';   
 </script>
 
 <style>
@@ -18,22 +18,24 @@
         justify-content: left;
         justify-items: left;
         text-align: left;
-        background-color: var(--kde-bg);
+        background-color: #232627;
     }
+
     .boxFooter {
-        margin: 0;
         position: absolute;
         top: 88%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 60%;
         height: 4%;
-        border-radius: 5px;
         display: flex;
         justify-content: left;
         justify-items: center;
         text-align: center;
-        background-color: var(--kde-bg);
+        background-color: #31363b;
+        z-index: 1;
+
+        border-top: 1px solid;
     }
 
     .terminal {
@@ -44,22 +46,38 @@
         padding-bottom: 50vh;
     }
 
-    .buttons {
+    .tab-button {
         color: var(--white);
-        background-color: black;
-        border-width: 0px;
-
-        border-right-color: gray;
-        border-right-width: 2px;
-
-        border-top-color: var(--white);
-        border-top-width: 2px;
-
+        background-color: #31363b;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 14px;
         cursor: pointer;
+
+        border-width: 1px;
+        border-bottom-width: 2px;
+        border-top-width: 0px;
+
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        border-left-color: transparent;
+
+        position: relative;
+    }
+
+    .tab-button.selected {
+        border-width: 1px;
+
+        border-top-width: 0px;
+        border-top-color: transparent;
+
+        border-color: white;
+        border-bottom-color: var(--arch-blue);
+
+        background-color: #31363b;
+
+        top: -1px;
     }
 
     .links {
@@ -81,6 +99,7 @@
         padding: 20px 20px 40px 0px;
     }
 </style>
+
 
 <div class="box"> 
     <div class="terminal">
@@ -126,10 +145,31 @@
 
             <a href="https://github.com/omkbd/ErgoDash" class="links"><i class="nf nf-fa-arrow_right"></i> ergodash</a>
             <p class="description">im currently sourcing parts to make my own custom split keyboard, i will likely make an ErgoDash, or something similar</p>
+        {:else if activeTab === 'information'}
+            <p> ~ $ wip </p>
         {/if}
     </div>
 </div>
 <div class="boxFooter">
-    <button on:click={() => activeTab='completed_projects'} class="buttons">~ : completed_projects</button>
-    <button on:click={() => activeTab='work_in_progress'} class="buttons">~ : work_in_progress</button>
+    <button 
+        on:click={() => activeTab = 'completed_projects'} 
+        class="tab-button"
+        class:selected={activeTab === 'completed_projects'}
+    >
+        ~ : completed_projects
+    </button>
+    <button 
+        on:click={() => activeTab = 'work_in_progress'} 
+        class="tab-button"
+        class:selected={activeTab === 'work_in_progress'}
+    >
+        ~ : work_in_progress
+    </button>
+    <button 
+        on:click={() => activeTab = 'information'} 
+        class="tab-button"
+        class:selected={activeTab === 'information'}
+    >
+        ~ : information 
+    </button>
 </div>
