@@ -258,7 +258,7 @@
             <a href="https://captnjayce.itch.io/" class="links"><i class="nf nf-fa-itch_io"></i> itch.io</a>
             <a href="https://www.linkedin.com/in/jc444/" class="links"><i class="nf nf-md-linkedin"></i> linkedin</a>
             <a href="mailto:captn.enquiries@protonmail.com" class="links"><i class="nf nf-md-email"></i> email</a>
-            <a href="https://discord.com/app" class="links"><i class="nf nf-fa-discord"></i>  @CaptnJayce</a>
+            <a href="https://discord.com/users/775894736623239260" class="links"><i class="nf nf-fa-discord"></i> discord</a>
         </div>
     </div>
 </div>
