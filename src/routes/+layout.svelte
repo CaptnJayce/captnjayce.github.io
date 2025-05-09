@@ -7,13 +7,6 @@
     let interval: number;
     
     const updateTime = () => {
-        const options = {
-            timeZone: 'Europe/London',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: false
-        };
         currentTime = new Date().toLocaleTimeString('en-GB');
     };
     
@@ -30,9 +23,9 @@
 <style>
     :global {
         :root {
-            --link-blue: #21BFC2;
-            --command-green: #29D398;
+            --blue: #21BFC2;
             --red: #F43E5C;
+            --pink: #EE64AE;
             --dark-bg: #1A1C23;
             --white: #FDF0ED;
         }
@@ -43,13 +36,6 @@
             margin: 0;
         }
 
-        .title {
-            color: var(--white);
-        }
-
-        .command {
-            color: var(--command-green);
-        }
     }
 
     .layout {
@@ -85,16 +71,18 @@
         margin: 9px 25px 0px 25px;
     }
     .navText:hover {
-        color: var(--link-blue);
+        font-weight: bold;
+        color: var(--red);
     }
     
     .navIcon {
-        color: var(--white);
+        color: var(--red);
         font-size: 30px;
         margin: 0px 25px 0px 25px;
     }
     .navIcon:hover {
-        color: var(--link-blue);
+        color: var(--red);
+        font-weight: bold;
     }
 
     a {
@@ -108,9 +96,6 @@
         <div class="navLeft">
             <!-- svelte-ignore a11y_consider_explicit_label -->
             <a href="{base}/" class="navIcon"><i class="nf nf-md-arch"></i></a>
-            <a href="{base}/projects" class="navText">Projects</a>
-            <a href="{base}/games" class="navText">Games</a>
-            <a href="{base}/contact" class="navText">Contact</a>
         </div>
         <div class="navRight">
             <div class="navText">My Time: {currentTime}</div>
