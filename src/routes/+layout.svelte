@@ -79,16 +79,6 @@
         flex: 1;
     }
 
-    .footer {
-        text-align: center;
-        color: var(--white);
-    }
-
-    .footerText {
-        display: inline;
-        margin: 0px 100px 0px 100px;
-    }
-
     .navText {
         color: var(--white);
         font-size: 16px;
@@ -120,7 +110,7 @@
             <a href="{base}/" class="navIcon"><i class="nf nf-md-arch"></i></a>
             <a href="{base}/projects" class="navText">Projects</a>
             <a href="{base}/games" class="navText">Games</a>
-            <a href="{base}/info" class="navText">Info</a>
+            <a href="{base}/contact" class="navText">Contact</a>
         </div>
         <div class="navRight">
             <div class="navText">My Time: {currentTime}</div>
