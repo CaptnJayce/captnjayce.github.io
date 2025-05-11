@@ -28,6 +28,7 @@
             --pink: #EE64AE;
             --dark-bg: #1A1C23;
             --white: #FDF0ED;
+            --purple: #B877DB;
         }
         body {
             font-family: Hack;
