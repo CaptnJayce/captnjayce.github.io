@@ -1,6 +1,0 @@
-[build]
-  command = "bun run build"
-  publish = "build/client"
-
-[build.environment]
-  NODE_VERSION = "20"
