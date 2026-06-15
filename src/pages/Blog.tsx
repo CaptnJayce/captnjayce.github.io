@@ -4,7 +4,10 @@ import { blogPosts } from '../data/blog'
 function Blog() {
   return (
     <div className="blog-page">
-      <h2 className="blog-page-title"><span className="pre-header">ALL.</span> Blog</h2>
+      <div className="page-header">
+        <Link to="/#blog" className="back-link">← Home</Link>
+        <h2 className="blog-page-title">Blog</h2>
+      </div>
       <div className="blog-list">
         {blogPosts.map((post) => (
           <Link to={`/blog/${post.slug}`} className="blog-item" key={post.slug}>

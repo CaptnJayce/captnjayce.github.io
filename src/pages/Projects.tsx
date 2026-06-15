@@ -1,9 +1,13 @@
+import { Link } from 'react-router-dom'
 import { projects } from '../data/projects'
 
 function Projects() {
   return (
     <div className="projects-page">
-      <h2 className="projects-title"><span className="pre-header">ALL.</span> Lorem Ipsum</h2>
+      <div className="page-header">
+        <Link to="/#projects" className="back-link">← Home</Link>
+        <h2 className="projects-title">Projects</h2>
+      </div>
       <div className="projects-page-grid">
         {projects.map((project, index) => (
           <div className={`grid-flex ${index % 2 === 1 ? 'reversed' : ''}`} key={project.slug}>
@@ -15,7 +19,6 @@ function Projects() {
             </div>
             <div className="col col-text">
               <div className="Aligner-item">
-                <h1>LOREM</h1>
                 <h2>{project.title}</h2>
                 <p className="project-date">{project.date}</p>
                 <p className="project-desc">

@@ -8,7 +8,10 @@ function BlogPost() {
   if (!post) {
     return (
       <div className="blog-post">
-        <Link to="/blog" className="back-link">← back to blog</Link>
+        <div className="blog-nav">
+          <Link to="/#blog" className="back-link">← Home</Link>
+          <Link to="/blog" className="back-link">← All Blogs</Link>
+        </div>
         <h1>Post not found</h1>
         <p>Sorry, that post doesn't exist.</p>
       </div>
@@ -17,7 +20,10 @@ function BlogPost() {
 
   return (
     <div className="blog-post">
-      <Link to="/blog" className="back-link">← back to blog</Link>
+      <div className="blog-nav">
+          <Link to="/#blog" className="back-link">← Home</Link>
+        <Link to="/blog" className="back-link">← All Blogs</Link>
+      </div>
       <div className="blog-post-header">
         <h1 className="blog-post-title">{post.title}</h1>
         <div className="blog-post-meta">

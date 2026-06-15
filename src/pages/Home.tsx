@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { projects } from '../data/projects'
 import { blogPosts } from '../data/blog'
@@ -5,6 +6,16 @@ import { blogPosts } from '../data/blog'
 function Home() {
   const featured = projects.slice(0, 3)
   const featuredBlog = blogPosts.slice(0, 3)
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1)
+      const el = document.getElementById(id)
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
+      }
+    }
+  }, [])
 
   return (
     <div className="home">
@@ -20,7 +31,7 @@ function Home() {
         <div className="section1-bottom">
           <div className="quote-template">
             <p className="quote-text small">
-              <span className="lang-text">سكينة</span> | &nbsp;Euthymia
+              <span className="lang-text">سكينة</span> | &nbsp;Sakina
             </p>
           </div>
         </div>
@@ -28,6 +39,7 @@ function Home() {
 
       {/* About */}
       <section className="section2">
+        <h2 className="section2-title"><span className="pre-header">01.</span> ABOUT</h2>
         <div className="image-container">
           <img
             src="/assets/pfp.jpg"
@@ -36,24 +48,22 @@ function Home() {
           />
         </div>
         <div className="section2-content">
-          <h2><span className="pre-header">01.</span> ABOUT</h2>
           <p>
-            Hi! I'm Casey, a CS graduate and Muslim revert with a passion for game development and AI.
-            I'm always coding, most of the time it's <span className="highlight">game development</span>,
-            <span className="highlight"> tooling</span>, or something<span className="highlight"> AI oriented</span>.
-            I spend most of my time in C++, Python, and Lua - usually building games and tools,
-            or teaching machines how to work instead.
+            Hi! I'm Casey, a CS graduate and Muslim revert from London with a passion for game development and AI.
+            I spend most of my time writing building games and tools, or teaching machines how to work instead.
             <br /><br />
-            When I'm not coding, I'm usually working on my fantasy universe, Asl.
+            When I'm not coding, I'm working on my fantasy universe, <span className="highlight">Asl</span> (Arabic transliteration for 'Origin')
             <br /><br />
-            <span className="highlight">Note:</span> Despite my love for AI, I never combine it with my creative work. I think it's a very interesting field and it certainly has it's place - particularly in development, but creativity is a human expression. Machines should optimize the work, not the hobby.
+            <span className="highlight">Note:</span> Despite my love for AI, I never combine it with my creative work. I think it's a very interesting field and it has its place in development, but creativity is a human expression. Machines should optimize the work, not the hobby.
           </p>
+        </div>
+        <div className="section2-footer">
           <a href="/resume.pdf" target="_blank" className="resume-button">Résumé</a>
         </div>
       </section>
 
       {/* Featured Projects */}
-      <section className="section4">
+      <section id="projects" className="section4">
         <div className="section4-content">
           <h2 className="title"><span className="pre-header">02.</span> PROJECTS</h2>
           {featured.map((project, index) => (
@@ -66,7 +76,6 @@ function Home() {
               </div>
               <div className="col col-text">
                 <div className="Aligner-item">
-                  <h1>PROJECT</h1>
                   <h2>{project.title}</h2>
                   <p className="project-desc">
                     {project.description}
@@ -98,7 +107,7 @@ function Home() {
       </section>
 
       {/* Blog */}
-      <section className="section4">
+      <section id="blog" className="section4">
         <div className="section4-content">
           <h2 className="title"><span className="pre-header">03.</span> BLOG</h2>
           <div className="blog-preview-list">
