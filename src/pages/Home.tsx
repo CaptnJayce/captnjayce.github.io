@@ -57,7 +57,7 @@ function Home() {
         <div className="section2-content">
           <p>
             Hi! I'm Casey, a CS graduate and Muslim revert from London with a passion for game development and AI.
-            I spend most of my time writing building games and tools, or teaching machines how to work instead.
+            I spend most of my time building games and tools, or teaching machines how to work instead.
             <br /><br />
             When I'm not coding, I'm working on my fantasy universe, <span className="highlight">Asl</span> (Arabic transliteration for 'Origin')
             <br /><br />
