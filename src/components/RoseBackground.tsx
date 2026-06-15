@@ -7,7 +7,6 @@ interface RoseSticker {
   opacity: number
 }
 
-// Hand-placed positions for a scattered sticker look — no overlap, good coverage
 const STICKERS: RoseSticker[] = [
   { id: 0, x: 8, y: 12, size: 110, rotation: 15, opacity: 0.1 },
   { id: 1, x: 22, y: 28, size: 90, rotation: 45, opacity: 0.08 },

@@ -1,12 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { projects } from '../data/projects'
-import { blogPosts } from '../data/blog'
+import { loadBlogPosts, type BlogPost } from '../data/blog-loader'
 import BlogModal from '../components/BlogModal'
 
 function Home() {
   const [projectsExpanded, setProjectsExpanded] = useState(false)
   const [blogExpanded, setBlogExpanded] = useState(false)
   const [activeBlogSlug, setActiveBlogSlug] = useState<string | null>(null)
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
+  const [blogLoading, setBlogLoading] = useState(true)
+
+  useEffect(() => {
+    loadBlogPosts()
+      .then((posts) => {
+        setBlogPosts(posts)
+        setBlogLoading(false)
+      })
+      .catch(() => setBlogLoading(false))
+  }, [])
 
   const featuredProjects = projects.slice(0, 3)
   const featuredBlog = blogPosts.slice(0, 3)
@@ -121,32 +132,36 @@ function Home() {
         <div className="section4-content">
           <h2 className="title"><span className="pre-header">03.</span> BLOG</h2>
           <div className="blog-preview-list">
-            {visibleBlog.map((post) => (
-              <div
-                className="blog-preview-item"
-                key={post.slug}
-                onClick={() => setActiveBlogSlug(post.slug)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    setActiveBlogSlug(post.slug)
-                  }
-                }}
-              >
-                <div className="blog-preview-header">
-                  <h3 className="blog-preview-title">{post.title}</h3>
-                  <span className="blog-preview-date">{post.date}</span>
+            {blogLoading ? (
+              <div className="blog-loading">Loading posts...</div>
+            ) : (
+              visibleBlog.map((post) => (
+                <div
+                  className="blog-preview-item"
+                  key={post.slug}
+                  onClick={() => setActiveBlogSlug(post.slug)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      setActiveBlogSlug(post.slug)
+                    }
+                  }}
+                >
+                  <div className="blog-preview-header">
+                    <h3 className="blog-preview-title">{post.title}</h3>
+                    <span className="blog-preview-date">{post.date}</span>
+                  </div>
+                  <p className="blog-preview-excerpt">{post.excerpt}</p>
+                  <div className="blog-preview-tags">
+                    {post.tags.map((tag) => (
+                      <span className="tag" key={tag}>{tag}</span>
+                    ))}
+                  </div>
                 </div>
-                <p className="blog-preview-excerpt">{post.excerpt}</p>
-                <div className="blog-preview-tags">
-                  {post.tags.map((tag) => (
-                    <span className="tag" key={tag}>{tag}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
           <div className="view-all-projects">
             <button

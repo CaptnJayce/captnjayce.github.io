@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
-import { blogPosts } from '../data/blog'
+import { useEffect, useRef, useState } from 'react'
+import { getBlogPostBySlug, type BlogPost } from '../data/blog-loader'
 
 interface BlogModalProps {
   slug: string | null
@@ -8,7 +8,22 @@ interface BlogModalProps {
 
 function BlogModal({ slug, onClose }: BlogModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
-  const post = slug ? blogPosts.find((p) => p.slug === slug) : null
+  const [post, setPost] = useState<BlogPost | null>(null)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (!slug) {
+      setPost(null)
+      return
+    }
+    setLoading(true)
+    getBlogPostBySlug(slug)
+      .then((found) => {
+        setPost(found || null)
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  }, [slug])
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -24,6 +39,16 @@ function BlogModal({ slug, onClose }: BlogModalProps) {
     }
   }, [slug, onClose])
 
+  if (!slug) return null
+  if (loading) {
+    return (
+      <div className="modal-overlay">
+        <div className="modal-content">
+          <p className="modal-loading">Loading...</p>
+        </div>
+      </div>
+    )
+  }
   if (!post) return null
 
   return (
