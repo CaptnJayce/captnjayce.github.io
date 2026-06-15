@@ -64,9 +64,7 @@ function Home() {
             <span className="highlight">Note:</span> Despite my love for AI, I never combine it with my creative work. I think it's a very interesting field and it has its place in development, but creativity is a human expression. Machines should optimize the work, not the hobby.
           </p>
         </div>
-        <div className="section2-footer">
-          <a href="/resume.pdf" target="_blank" className="resume-button">Résumé</a>
-        </div>
+
       </section>
 
       {/* Projects */}
