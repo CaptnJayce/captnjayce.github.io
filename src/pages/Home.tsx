@@ -1,21 +1,17 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { projects } from '../data/projects'
 import { blogPosts } from '../data/blog'
+import BlogModal from '../components/BlogModal'
 
 function Home() {
-  const featured = projects.slice(0, 3)
-  const featuredBlog = blogPosts.slice(0, 3)
+  const [projectsExpanded, setProjectsExpanded] = useState(false)
+  const [blogExpanded, setBlogExpanded] = useState(false)
+  const [activeBlogSlug, setActiveBlogSlug] = useState<string | null>(null)
 
-  useEffect(() => {
-    if (window.location.hash) {
-      const id = window.location.hash.slice(1)
-      const el = document.getElementById(id)
-      if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
-      }
-    }
-  }, [])
+  const featuredProjects = projects.slice(0, 3)
+  const featuredBlog = blogPosts.slice(0, 3)
+  const visibleProjects = projectsExpanded ? projects : featuredProjects
+  const visibleBlog = blogExpanded ? blogPosts : featuredBlog
 
   return (
     <div className="home">
@@ -62,11 +58,11 @@ function Home() {
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Projects */}
       <section id="projects" className="section4">
         <div className="section4-content">
           <h2 className="title"><span className="pre-header">02.</span> PROJECTS</h2>
-          {featured.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <div className={`grid-flex ${index % 2 === 1 ? 'reversed' : ''}`} key={project.slug}>
               <div
                 className="col col-image"
@@ -76,6 +72,7 @@ function Home() {
               </div>
               <div className="col col-text">
                 <div className="Aligner-item">
+                  <span className="project-team">{project.team}</span>
                   <h2>{project.title}</h2>
                   <p className="project-desc">
                     {project.description}
@@ -85,23 +82,36 @@ function Home() {
                       <div className="tag" key={tag}>{tag}</div>
                     ))}
                   </div>
-                  {project.links?.map((link) => (
+                  {project.demo ? (
                     <a
-                      href={link.url}
+                      href={project.demo}
                       target="_blank"
                       rel="noreferrer"
-                      className="github-button"
-                      key={link.label}
+                      className="project-button"
                     >
-                      {link.label}
+                      View Demo
                     </a>
-                  ))}
+                  ) : project.repo ? (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="project-button"
+                    >
+                      View Repo
+                    </a>
+                  ) : null}
                 </div>
               </div>
             </div>
           ))}
           <div className="view-all-projects">
-            <Link to="/projects" className="github-button">View All Projects</Link>
+            <button
+              className="github-button"
+              onClick={() => setProjectsExpanded(!projectsExpanded)}
+            >
+              {projectsExpanded ? 'Show Less' : 'View All Projects'}
+            </button>
           </div>
         </div>
       </section>
@@ -111,8 +121,20 @@ function Home() {
         <div className="section4-content">
           <h2 className="title"><span className="pre-header">03.</span> BLOG</h2>
           <div className="blog-preview-list">
-            {featuredBlog.map((post) => (
-              <Link to={`/blog/${post.slug}`} className="blog-preview-item" key={post.slug}>
+            {visibleBlog.map((post) => (
+              <div
+                className="blog-preview-item"
+                key={post.slug}
+                onClick={() => setActiveBlogSlug(post.slug)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    setActiveBlogSlug(post.slug)
+                  }
+                }}
+              >
                 <div className="blog-preview-header">
                   <h3 className="blog-preview-title">{post.title}</h3>
                   <span className="blog-preview-date">{post.date}</span>
@@ -123,11 +145,16 @@ function Home() {
                     <span className="tag" key={tag}>{tag}</span>
                   ))}
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
           <div className="view-all-projects">
-            <Link to="/blog" className="github-button">View All Posts</Link>
+            <button
+              className="github-button"
+              onClick={() => setBlogExpanded(!blogExpanded)}
+            >
+              {blogExpanded ? 'Show Less' : 'View All Posts'}
+            </button>
           </div>
         </div>
       </section>
@@ -144,6 +171,8 @@ function Home() {
           </p>
         </div>
       </section>
+
+      <BlogModal slug={activeBlogSlug} onClose={() => setActiveBlogSlug(null)} />
     </div>
   )
 }
